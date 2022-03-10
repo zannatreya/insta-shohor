@@ -4,11 +4,11 @@ const likedPostsId = [];
 const reportedPostsId = [];
 
 const getLikedPosts = () => {
-  return posts.filter((post) => likedPostsId.includes(post.id));
+  return posts.filter((post) => likedPostsId.includes(post.id.toString()));
 };
 
 const getReportedPosts = () => {
-  return posts.filter((post) => reportedPostsId.includes(post.id));
+  return posts.filter((post) => reportedPostsId.includes(post.id.toString()));
 };
 
 const isLiked = (id) => {
@@ -16,7 +16,7 @@ const isLiked = (id) => {
 };
 
 const addToLiked = (id) => {
-  likedPostsId.plus(id);
+  likedPostsId.push(id);
   showPosts(posts);
 };
 
@@ -27,7 +27,7 @@ const reportPost = (id) => {
 };
 
 const displayContent = (text) => {
-  console.log(text);
+  // console.log(text);
   return text.length < 30 ? text : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
 };
 
@@ -52,7 +52,7 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
-  console.log(post);
+  // console.log(post);
   const image = post.image;
   const div = document.createElement("article");
   div.classList.add("post");
@@ -145,6 +145,7 @@ const showPosts = (posts) => {
 
 const displayLikedPosts = () => {
   const likedPosts = getLikedPosts();
+  console.log(likedPosts)
   likedPosts.forEach((post) => {
     const div = createPost(post);
     document.getElementById("liked").appendChild(div);
