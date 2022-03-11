@@ -4,11 +4,11 @@ const likedPostsId = [];
 const reportedPostsId = [];
 
 const getLikedPosts = () => {
-  return posts.filter((post) => likedPostsId.includes(post.id.toString()));
+  return posts.filter((post) => likedPostsId.includes(post.id));
 };
 
 const getReportedPosts = () => {
-  return posts.filter((post) => reportedPostsId.includes(post.id.toString()));
+  return posts.filter((post) => reportedPostsId.includes(post.id));
 };
 
 const isLiked = (id) => {
@@ -16,12 +16,12 @@ const isLiked = (id) => {
 };
 
 const addToLiked = (id) => {
-  if (likedPostsId.indexOf(id) === -1) {
-    likedPostsId.push(id);
-    // console.log(likedPostsId);
-    showPosts(posts);
-    console.log(posts)
-  }
+  // if (likedPostsId.indexOf(id) === -1) {
+  likedPostsId.push(id);
+  // console.log(likedPostsId);
+  showPosts(posts);
+  console.log(posts)
+  // }
 };
 
 const reportPost = (id) => {
